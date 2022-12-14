@@ -8,6 +8,7 @@ let gCtx
 function onInit() {
     gElCanvas = document.querySelector('.canvas-container canvas')
     gCtx = gElCanvas.getContext('2d')
+    renderMeme()
 }
 
 function renderMeme() {
@@ -29,7 +30,6 @@ function renderMeme() {
 }
 
 function renderTxt({txt, txtColor, txtAlign, txtSize}, x, y) {
-    gCtx.lineWidth = 2
     gCtx.strokeStyle = 'black'
     gCtx.fillStyle = txtColor
     gCtx.font = `${txtSize}px Impact`

@@ -7,34 +7,39 @@
     <title>Meem</title>
     <link rel="stylesheet" href="./css/main.css">
 </head>
-<body onload="onInit()">
+<body onload="onInit()" class="grid">
 
     <!-- Header -->
-    <header class="main-header">
-        <div class="brand"><h1>Meem</h1></div>
-        <nav class="main-nav">
-            <ul>
-                <li>Gallery</li>
-                <li>About</li>
-            </ul>
-        </nav>
+    <header class="main-header main-layout">
+        <div class="nav-container flex align-center space-between">
+            <div class="brand"><h1>Meem</h1></div>
+            <nav class="main-nav">
+                <ul class="clean-list flex">
+                    <li>Gallery</li>
+                    <li>About</li>
+                </ul>
+            </nav>
+        </div>
+
     </header>
 
     <!-- Content -->
-    <main class="main-content">
+    <main class="main-content main-layout">
         <section class="filter-container">FILTERS</section>
         <section class="gallery-container">GALLEY</section>
         <section class="about-container">ABOUT</section>
-        <section class="editor-container">
-            EDITOR
+        <section class="editor-container full main-layout grid">
             <div class="canvas-container">
                 <canvas width="500" height="500"></canvas>
             </div>
+            <section class="toolbox-container">
+                <input type="text" placeholder="Meme text">
+            </section>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="main-footer">
+    <footer class="main-footer main-layout flex column">
         <div class="brand">Meem</div>
         <small>All rights reserved 2022</small>
     </footer>

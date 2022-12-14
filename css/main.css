@@ -1,0 +1,84 @@
+/* CSS reset */
+@import './setup/cssreset.css';
+
+/* vars */
+:root {
+    --primary-bgc: #ff7f00;
+    --body-bgc: #eee;
+    --primary-color: #ffffff;
+}
+
+/* basics */
+body {
+    min-height: 100vh;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    background-color: var(--body-bgc);
+}
+
+small {
+    display: block;
+}
+
+.main-header, .main-footer {
+    background-color: var(--primary-bgc);
+    color: var(--primary-color);
+}
+
+.main-content {
+    position: relative;
+}
+
+/* layouts */
+.main-layout > *:not(.full) {
+    max-width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* components */
+.editor-container {
+    background-color: var(--body-bgc);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    padding: 1.375rem 0;
+}
+
+/* flex helpers */
+.flex {
+    display: flex;
+}
+
+.flex.column {
+    flex-direction: column;
+}
+
+.flex.align-center {
+    align-items: center;
+}
+
+.flex.space-between {
+    justify-content: space-between;
+}
+
+/* grid helpers */
+.grid {
+    display: grid;
+}
+
+/* list helpers */
+.clean-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* helpers */
+.hidden {
+    display: none;
+}
