@@ -13,7 +13,7 @@ function onInit() {
 
 function renderMeme() {
     const meme = getMeme()
-    const memeImg = getMemeImg()
+    const memeImgPath = `images/${getMemeImg()}`
 
     const txt = meme.lines[meme.selectedLineIdx].txt
     const txtColor = meme.lines[meme.selectedLineIdx].color
@@ -21,7 +21,7 @@ function renderMeme() {
     const txtSize = meme.lines[meme.selectedLineIdx].size
 
     const elImg = new Image()
-    elImg.src = memeImg
+    elImg.src = memeImgPath
 
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
