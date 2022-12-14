@@ -7,8 +7,9 @@
     <title>Meem</title>
     <link rel="stylesheet" href="./css/main.css">
 </head>
-<body>
+<body onload="onInit()">
 
+    <!-- Header -->
     <header class="main-header">
         <div class="brand"><h1>Meem</h1></div>
         <nav class="main-nav">
@@ -19,18 +20,27 @@
         </nav>
     </header>
 
+    <!-- Content -->
     <main class="main-content">
         <section class="filter-container">FILTERS</section>
         <section class="gallery-container">GALLEY</section>
         <section class="about-container">ABOUT</section>
-        <section class="editor-container">EDITOR</section>
+        <section class="editor-container">
+            EDITOR
+            <div class="canvas-container">
+                <canvas width="500" height="500"></canvas>
+            </div>
+        </section>
     </main>
 
+    <!-- Footer -->
     <footer class="main-footer">
         <div class="brand">Meem</div>
         <small>All rights reserved 2022</small>
     </footer>
 
+    <script src="./js/services/meme-service.js"></script>
+    <script src="./js/meme-controller.js"></script>
     <script src="./js/main.js"></script>
 </body>
 </html>
