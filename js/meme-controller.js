@@ -9,35 +9,42 @@ function onEditorInit() {
     gElCanvas = document.querySelector('.canvas-container canvas')
     gCtx = gElCanvas.getContext('2d')
     renderMeme()
+    setInputValue()
 }
 
 function renderMeme() {
-    const meme = getMeme()
+    
     const memeImgPath = getMemeImg()
-
-    const txt = meme.lines[meme.selectedLineIdx].txt
-    const txtColor = meme.lines[meme.selectedLineIdx].color
-    const txtAlign = meme.lines[meme.selectedLineIdx].align
-    const txtSize = meme.lines[meme.selectedLineIdx].size
 
     const elImg = new Image()
     elImg.src = memeImgPath
 
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
-        renderTxt({ txt, txtColor, txtAlign, txtSize }, gElCanvas.width / 2, gElCanvas.height / 2)
+        renderTxt()
+        // renderTxt({ txt, txtColor, txtAlign, txtSize }, gElCanvas.width / 2, gElCanvas.height / 2)
     }
 }
 
-function renderTxt({ txt, txtColor, txtAlign, txtSize }, x, y) {
-    gCtx.strokeStyle = 'black'
-    gCtx.fillStyle = txtColor
-    gCtx.font = `${txtSize}px Impact`
-    gCtx.textAlign = txtAlign
-    gCtx.textBaseline = txtAlign
+function renderTxt() {
+    const meme = getMeme()
+    meme.lines.forEach((line, idx) => {
+        const {txt, color, align, size} = meme.lines[idx]
 
-    gCtx.fillText(txt, x, y)
-    gCtx.strokeText(txt, x, y)
+        gCtx.strokeStyle = 'black'
+        gCtx.fillStyle = color
+        gCtx.font = `${size}px Impact`
+        gCtx.textAlign = align
+        gCtx.textBaseline = align
+        
+        if(idx === 0){
+            gCtx.fillText(txt, gElCanvas.width / 2, 40)
+            gCtx.strokeText(txt, gElCanvas.width / 2, 40)
+        } else {
+            gCtx.fillText(txt, gElCanvas.width / 2, gElCanvas.height - 20)
+            gCtx.strokeText(txt, gElCanvas.width / 2, gElCanvas.height - 20)
+        }
+    })
 }
 
 function onChangeTxt(txt) {
@@ -53,4 +60,16 @@ function onSelectColor(color) {
 function onChangeFontSize(diff) {
     setFontSize(diff)
     renderMeme()
+}
+
+function onChangeLine(){
+    setCurrentLine()
+    renderMeme()
+    setInputValue()
+}
+
+function setInputValue(){
+    const elInput = document.querySelector('.meme-text')
+    const meme = getMeme()
+    elInput.value = meme.lines[meme.selectedLineIdx].txt
 }

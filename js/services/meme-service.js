@@ -27,9 +27,15 @@ let gMeme = {
     lines: [
         {
             txt: 'I sometimes eat Falafel',
-            size: 20,
+            size: 30,
             align: 'left',
             color: 'red'
+        },
+        {
+            txt: 'Shut up',
+            size: 30,
+            align: 'center',
+            color: 'white'
         }
     ]
 }
@@ -60,4 +66,12 @@ function setColor(color){
 
 function setFontSize(diff){
     gMeme.lines[gMeme.selectedLineIdx].size += diff
+}
+
+function setCurrentLine(){
+    if(!gMeme.lines[gMeme.selectedLineIdx + 1]) {
+        gMeme.selectedLineIdx = 0
+        return
+    }
+    gMeme.selectedLineIdx++
 }

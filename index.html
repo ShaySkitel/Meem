@@ -37,7 +37,7 @@
                     <canvas width="500" height="500"></canvas>
                 </div>
                 <section class="toolbox-container flex column">
-                    <input oninput="onChangeTxt(this.value)" type="text" placeholder="Meme text">
+                    <input class="meme-text" oninput="onChangeTxt(this.value)" type="text" placeholder="Meme text">
                     <div title="Change fill color" class="option select-color">
                         <img src="images/UI/paint-board-and-brush.png">
                         <input oninput="onSelectColor(this.value)" type="color">
@@ -47,6 +47,9 @@
                     </div>
                     <div onclick="onChangeFontSize(-1)" title="Decrease font size" class="option decrease-font">
                         <img src="images/UI/decrease font - icon.png">
+                    </div>
+                    <div onclick="onChangeLine()" title="Change selected line" class="option change-line">
+                        <img src="images/UI/up-and-down-opposite-double-arrows-side-by-side.png">
                     </div>
                 </section>
             </section>
