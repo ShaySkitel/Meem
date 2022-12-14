@@ -22,3 +22,7 @@ function getMeme(){
 function getMemeImg(){
     return gImgs.find(img => img.id === gMeme.selectedImgId).url
 }
+
+function setLineTxt(txt){
+    gMeme.lines[gMeme.selectedLineIdx].txt = txt
+}
