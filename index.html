@@ -36,8 +36,12 @@
                 <div class="canvas-container">
                     <canvas width="500" height="500"></canvas>
                 </div>
-                <section class="toolbox-container">
+                <section class="toolbox-container flex column">
                     <input oninput="onChangeTxt(this.value)" type="text" placeholder="Meme text">
+                    <div class="select-color">
+                        <img src="images/UI/paint-board-and-brush.png">
+                        <input oninput="onSelectColor(this.value)" type="color">
+                    </div>
                 </section>
             </section>
         </main>

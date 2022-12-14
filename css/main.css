@@ -77,6 +77,30 @@ body.editor-open .editor-container {
     max-width: fit-content;
 }
 
+.toolbox-container .select-color {
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1em;
+    position: relative;
+    overflow: hidden;
+}
+
+.toolbox-container .select-color img {
+    width: 70%;
+}
+
+.toolbox-container .select-color input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
 /* flex helpers */
 .flex {
     display: flex;

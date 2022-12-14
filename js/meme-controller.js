@@ -44,3 +44,8 @@ function onChangeTxt(txt){
     setLineTxt(txt)
     renderMeme()
 }
+
+function onSelectColor(color){
+    setColor(color)
+    renderMeme()
+}
