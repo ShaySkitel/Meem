@@ -11,10 +11,14 @@
 /* basics */
 body {
     min-height: 100vh;
+    background-color: var(--body-bgc);
+}
+
+.container {
+    overflow-x: hidden;
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
-    background-color: var(--body-bgc);
-    overflow-x: hidden;
+    min-height: 100vh;
 }
 
 small {

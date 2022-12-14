@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,46 +8,50 @@
     <title>Meem</title>
     <link rel="stylesheet" href="./css/main.css">
 </head>
-<body onload="onGalleryInit();onEditorInit()" class="grid">
 
-    <!-- Header -->
-    <header class="main-header main-layout">
-        <div class="nav-container flex align-center space-between">
-            <div class="brand"><h1>Meem</h1></div>
-            <nav class="main-nav">
-                <ul class="clean-list flex">
-                    <li><a onclick="onGallerySelect()" href="#">Gallery</a></li>
-                    <li>About</li>
-                </ul>
-            </nav>
-        </div>
-
-    </header>
-
-    <!-- Content -->
-    <main class="main-content main-layout">
-        <section class="filter-container">FILTERS</section>
-        <section class="gallery-container grid"></section>
-        <section class="about-container">ABOUT</section>
-        <section class="editor-container full main-layout grid">
-            <div class="canvas-container">
-                <canvas width="500" height="500"></canvas>
+<body onload="onGalleryInit();onEditorInit()">
+    <div class="container grid">
+        <!-- Header -->
+        <header class="main-header main-layout">
+            <div class="nav-container flex align-center space-between">
+                <div class="brand">
+                    <h1>Meem</h1>
+                </div>
+                <nav class="main-nav">
+                    <ul class="clean-list flex">
+                        <li><a onclick="onGallerySelect()" href="#">Gallery</a></li>
+                        <li>About</li>
+                    </ul>
+                </nav>
             </div>
-            <section class="toolbox-container">
-                <input oninput="onChangeTxt(this.value)" type="text" placeholder="Meme text">
+
+        </header>
+
+        <!-- Content -->
+        <main class="main-content main-layout">
+            <section class="filter-container">FILTERS</section>
+            <section class="gallery-container grid"></section>
+            <section class="about-container">ABOUT</section>
+            <section class="editor-container full main-layout grid">
+                <div class="canvas-container">
+                    <canvas width="500" height="500"></canvas>
+                </div>
+                <section class="toolbox-container">
+                    <input oninput="onChangeTxt(this.value)" type="text" placeholder="Meme text">
+                </section>
             </section>
-        </section>
-    </main>
+        </main>
 
-    <!-- Footer -->
-    <footer class="main-footer main-layout flex column">
-        <div class="brand">Meem</div>
-        <small>All rights reserved 2022</small>
-    </footer>
-
+        <!-- Footer -->
+        <footer class="main-footer main-layout flex column">
+            <div class="brand">Meem</div>
+            <small>All rights reserved 2022</small>
+        </footer>
+    </div>
     <script src="./js/services/meme-service.js"></script>
     <script src="./js/meme-controller.js"></script>
     <script src="./js/gallery-controller.js"></script>
     <script src="./js/main.js"></script>
 </body>
+
 </html>
