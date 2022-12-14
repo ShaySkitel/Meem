@@ -31,6 +31,7 @@ function renderTxt() {
     meme.lines.forEach((line, idx) => {
         const {txt, color, align, size} = meme.lines[idx]
 
+        gCtx.lineWidth = size * 0.05
         gCtx.strokeStyle = 'black'
         gCtx.fillStyle = color
         gCtx.font = `${size}px Impact`

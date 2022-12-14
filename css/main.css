@@ -73,6 +73,10 @@ small {
     cursor: pointer;
 }
 
+.search-input {
+    border: none;
+}
+
 .main-nav a {
     display: block;
     padding: 1.25em 1em;
@@ -217,6 +221,12 @@ body.editor-open .editor-container {
     grid-row: 6;
     grid-column: 4 / span 2;
     border-radius: 1em;
+    text-decoration: none;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.toolbox-container .download-img:hover {
+    background-color: var(--selection-color);
 }
 
 .toolbox-container .add-line {
