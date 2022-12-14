@@ -49,6 +49,17 @@ small {
     padding: 1.375rem 0;
 }
 
+.gallery-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1em;
+    justify-content: center;
+    align-content: center;
+}
+
+.card {
+    max-width: fit-content;
+}
+
 /* flex helpers */
 .flex {
     display: flex;

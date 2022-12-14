@@ -5,7 +5,7 @@ let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 let gElCanvas
 let gCtx
 
-function onInit() {
+function onEditorInit() {
     gElCanvas = document.querySelector('.canvas-container canvas')
     gCtx = gElCanvas.getContext('2d')
     renderMeme()
@@ -13,7 +13,7 @@ function onInit() {
 
 function renderMeme() {
     const meme = getMeme()
-    const memeImgPath = `../images/${getMemeImg()}`
+    const memeImgPath = getMemeImg()
 
     const txt = meme.lines[meme.selectedLineIdx].txt
     const txtColor = meme.lines[meme.selectedLineIdx].color

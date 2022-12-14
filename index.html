@@ -7,7 +7,7 @@
     <title>Meem</title>
     <link rel="stylesheet" href="./css/main.css">
 </head>
-<body onload="onInit()" class="grid">
+<body onload="onGalleryInit();onEditorInit()" class="grid">
 
     <!-- Header -->
     <header class="main-header main-layout">
@@ -26,9 +26,9 @@
     <!-- Content -->
     <main class="main-content main-layout">
         <section class="filter-container">FILTERS</section>
-        <section class="gallery-container">GALLEY</section>
+        <section class="gallery-container grid"></section>
         <section class="about-container">ABOUT</section>
-        <section class="editor-container full main-layout grid">
+        <section class="editor-container full main-layout grid hidden">
             <div class="canvas-container">
                 <canvas width="500" height="500"></canvas>
             </div>
@@ -46,6 +46,7 @@
 
     <script src="./js/services/meme-service.js"></script>
     <script src="./js/meme-controller.js"></script>
+    <script src="./js/gallery-controller.js"></script>
     <script src="./js/main.js"></script>
 </body>
 </html>
