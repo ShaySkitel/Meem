@@ -13,7 +13,7 @@ function onInit() {
 
 function renderMeme() {
     const meme = getMeme()
-    const memeImgPath = `images/${getMemeImg()}`
+    const memeImgPath = `../images/${getMemeImg()}`
 
     const txt = meme.lines[meme.selectedLineIdx].txt
     const txtColor = meme.lines[meme.selectedLineIdx].color
