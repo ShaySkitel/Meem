@@ -14,6 +14,7 @@ body {
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr auto;
     background-color: var(--body-bgc);
+    overflow-x: hidden;
 }
 
 small {
@@ -37,6 +38,10 @@ small {
 }
 
 /* components */
+.card {
+    cursor: pointer;
+}
+
 .editor-container {
     background-color: var(--body-bgc);
     position: absolute;
@@ -45,8 +50,16 @@ small {
     width: 100%;
     height: 100%;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: auto-fit 1fr;
     padding: 1.375rem 0;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    pointer-events: none;
+}
+
+body.editor-open .editor-container {
+    transform: translateX(0);
+    pointer-events: all;
 }
 
 .gallery-container {
@@ -87,9 +100,4 @@ small {
     list-style-type: none;
     padding: 0;
     margin: 0;
-}
-
-/* helpers */
-.hidden {
-    display: none;
 }
