@@ -3,6 +3,7 @@
 
 /* vars */
 :root {
+    --selection-color: #282828;
     --primary-bgc: #ff7f00;
     --body-bgc: #e3e3e3;
     --primary-color: #ffffff;
@@ -20,6 +21,11 @@
 @font-face {
     font-family: "Montserrat-thin";
     src: url("/fonts/montserrat/Montserrat-Thin.ttf");
+}
+
+@font-face {
+    font-family: "fa";
+    src: url("/fonts/font-awesome/fa-regular-400.ttf");
 }
 
 /* basics */
@@ -45,7 +51,8 @@ small {
     display: block;
 }
 
-.main-header, .main-footer {
+.main-header,
+.main-footer {
     background-color: var(--primary-bgc);
     color: var(--primary-color);
 }
@@ -55,7 +62,7 @@ small {
 }
 
 /* layouts */
-.main-layout > *:not(.full) {
+.main-layout>*:not(.full) {
     max-width: 90%;
     margin-right: auto;
     margin-left: auto;
@@ -71,6 +78,55 @@ small {
     padding: 1.25em 1em;
     color: var(--primary-color);
     text-decoration: none;
+    font-weight: 700;
+    transition: color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.main-nav a.active {
+    box-shadow: inset 0px -6px 0px 0px var(--selection-color);
+    color: var(--selection-color);
+}
+
+.main-footer {
+    padding: 3.89473em 0;
+}
+
+.main-footer .brand {
+    margin-block-end: 0.8421em;
+    font-weight: bold;
+}
+
+.main-footer small {
+    font-family: Montserrat-thin;
+}
+
+.filter-container {
+    background-color: var(--primary-color);
+    color: var(--selection-color);
+    padding: 1em 0;
+    font-size: 1.2rem;
+}
+
+.filter-container * {
+    color: inherit;
+}
+
+.about-container {
+    background-color: var(--primary-color);
+    padding: 4em;
+}
+
+.about-container .about-text {
+    padding: 0 2em;
+}
+
+.about-container .profile-img {
+    min-width: 320px;
+    height: 320px;
+}
+
+.about-container .profile-img img {
+    border-radius: 50%;
 }
 
 .editor-container {
@@ -84,8 +140,12 @@ small {
     grid-template-rows: auto-fit 1fr;
     padding: 1.375rem 0;
     transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.2s ease-in-out;
     pointer-events: none;
+}
+
+body.editor-open .gallery-container {
+    display: none;
 }
 
 body.editor-open .editor-container {
@@ -98,10 +158,107 @@ body.editor-open .editor-container {
     gap: 1em;
     justify-content: center;
     align-content: center;
+    padding: 1em 0;
 }
 
 .card {
     max-width: fit-content;
+}
+
+.toolbox-container {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr 1fr 1fr 1fr 2fr 1fr;
+    gap: 1rem;
+
+    /* not working for some reason */
+    /* grid-template-areas:
+    "txt txt txt txt txt"
+    ". lineswitch add delete ."
+    "fontplus fontminus left center right"
+    "font outlinecolor color"
+    "stickers stickers stickers stickers stickers"
+    ". . . share share"; */
+}
+
+.toolbox-container input,
+.toolbox-container select {
+    border-radius: 1em;
+    border: none;
+}
+
+.toolbox-container .meme-text {
+    grid-row: 1;
+    grid-column: 1 / -1;
+}
+
+.toolbox-container .change-line {
+    grid-row: 2;
+    grid-column: 2;
+}
+
+.toolbox-container .select-color {
+    grid-row: 4;
+    grid-column: 5;
+}
+
+.toolbox-container .increase-font {
+    grid-row: 3;
+    grid-column: 1;
+}
+
+.toolbox-container .decrease-font {
+    grid-row: 3;
+    grid-column: 2;
+}
+
+.toolbox-container .download-img {
+    background-color: var(--primary-bgc);
+    color: var(--primary-color);
+    grid-row: 6;
+    grid-column: 4 / span 2;
+    border-radius: 1em;
+}
+
+.toolbox-container .add-line {
+    grid-row: 2;
+    grid-column: 3;
+}
+
+.toolbox-container .delete-line {
+    grid-row: 2;
+    grid-column: 4;
+}
+
+.toolbox-container .font-left {
+    grid-row: 3;
+    grid-column: 3;
+}
+
+.toolbox-container .font-center {
+    grid-row: 3;
+    grid-column: 4;
+}
+
+.toolbox-container .font-right {
+    grid-row: 3;
+    grid-column: 5;
+}
+
+.toolbox-container .font-style {
+    grid-row: 4;
+    grid-column: 1 / span 3;
+}
+
+.toolbox-container .outline-color {
+    grid-row: 4;
+    grid-column: 4;
+}
+
+.toolbox-container .add-sticker {
+    grid-row: 5;
+    grid-column: 1 / -1;
+    background-color: var(--primary-color);
+    border-radius: 1em;
 }
 
 .toolbox-container .option {
@@ -115,6 +272,15 @@ body.editor-open .editor-container {
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.toolbox-container .option:not(.disabled):hover {
+    background-color: var(--primary-bgc);
+}
+
+.option.disabled {
+    background-color: gray;
 }
 
 .toolbox-container .option img {
@@ -142,8 +308,16 @@ body.editor-open .editor-container {
     align-items: center;
 }
 
+.flex.justify-center {
+    justify-content: center;
+}
+
 .flex.space-between {
     justify-content: space-between;
+}
+
+.flex.space-around {
+    justify-content: space-around;
 }
 
 /* grid helpers */

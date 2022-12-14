@@ -73,3 +73,8 @@ function setInputValue(){
     const meme = getMeme()
     elInput.value = meme.lines[meme.selectedLineIdx].txt
 }
+
+function downloadImage(elLink){
+    const imgData = gElCanvas.toDataURL('image/png')
+    elLink.href = imgData
+}

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meem</title>
+    <title>Meem&trade;</title>
     <link rel="stylesheet" href="./css/main.css">
 </head>
 
@@ -15,11 +15,11 @@
         <header class="main-header main-layout">
             <div class="nav-container flex align-center space-between">
                 <div class="brand">
-                    <h1>Meem</h1>
+                    <h1>Meem&trade;</h1>
                 </div>
                 <nav class="main-nav">
                     <ul class="clean-list flex">
-                        <li><a onclick="onGallerySelect()" href="#">Gallery</a></li>
+                        <li><a class="gallery-btn active" onclick="onGallerySelect(this)" href="#">Gallery</a></li>
                         <li><a href="#">About</a></li>
                     </ul>
                 </nav>
@@ -29,35 +29,95 @@
 
         <!-- Content -->
         <main class="main-content main-layout">
-            <section class="filter-container">FILTERS</section>
+            <section class="full filter-container main-layout">
+                <div class="flex space-between">
+                    <input type="text" placeholder="Enter search keyword">
+                    <ul class="clean-list flex">
+                        <li><a href="#">test</a></li>
+                        <li><a href="#">test</a></li>
+                        <li><a href="#">test</a></li>
+                        <li><a href="#">test</a></li>
+                        <li><a href="#">test</a></li>
+                    </ul>
+                </div>
+            </section>
             <section class="gallery-container grid"></section>
-            <section class="about-container">ABOUT</section>
+            <section class="about-container full main-layout">
+                <div class="flex">
+                    <div class="profile-img"><img src="images/5.jpg" alt=""></div>
+                    <div class="about-text flex column justify-center">
+                        <h2>Strong Baby</h2>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus dolore, doloribus
+                            error odit possimus sit sunt aspernatur, commodi placeat laudantium est corrupti facilis
+                            quae, ea tenetur nesciunt rerum maxime culpa!</p>
+                    </div>
+                </div>
+            </section>
             <section class="editor-container full main-layout grid">
                 <div class="canvas-container">
                     <canvas width="500" height="500"></canvas>
                 </div>
-                <section class="toolbox-container flex column">
+                <section class="toolbox-container grid">
                     <input class="meme-text" oninput="onChangeTxt(this.value)" type="text" placeholder="Meme text">
+                    
+                    <div onclick="onChangeLine()" title="Change selected line" class="option change-line">
+                        <img src="images/UI/up-and-down-opposite-double-arrows-side-by-side.png">
+                    </div>
+                    
+                    <div title="Add line of text" class="option disabled add-line">
+                        <img src="images/UI/add.png">
+                    </div>
+                    
+                    <div title="Delete line" class="option disabled delete-line">
+                        <img src="images/UI/trash.png">
+                    </div>
+
+                    <div onclick="onChangeFontSize(1)" title="Increase font size" class="option increase-font">
+                        <img src="images/UI/increase font - icon.png">
+                    </div>
+                    
+                    <div onclick="onChangeFontSize(-1)" title="Decrease font size" class="option decrease-font">
+                        <img src="images/UI/decrease font - icon.png">
+                    </div>
+                    
+                    <div title="Align to the left" class="option disabled font-left">
+                        <img src="images/UI/align-to-left.png">
+                    </div>
+                    
+                    <div title="Align center" class="option disabled font-center">
+                        <img src="images/UI/center-text-alignment.png">
+                    </div>
+                    
+                    <div title="Align to the right" class="option disabled font-right">
+                        <img src="images/UI/align-to-right.png">
+                    </div>
+
+                    <select title="Change font family" class="font-style">
+                        <option value="Impact">Impact</option>
+                    </select>
+
+                    <div title="Change outline color" class="option disabled outline-color">
+                        <img src="images/UI/text stroke.png">
+                    </div>
+
                     <div title="Change fill color" class="option select-color">
                         <img src="images/UI/paint-board-and-brush.png">
                         <input oninput="onSelectColor(this.value)" type="color">
                     </div>
-                    <div onclick="onChangeFontSize(1)" title="Increase font size" class="option increase-font">
-                        <img src="images/UI/increase font - icon.png">
+
+                    
+                    <div class="disabled add-sticker">
                     </div>
-                    <div onclick="onChangeFontSize(-1)" title="Decrease font size" class="option decrease-font">
-                        <img src="images/UI/decrease font - icon.png">
-                    </div>
-                    <div onclick="onChangeLine()" title="Change selected line" class="option change-line">
-                        <img src="images/UI/up-and-down-opposite-double-arrows-side-by-side.png">
-                    </div>
+                    
+                    <a title="Download meme" class="download-img flex align-center justify-center" href="" onclick="downloadImage(this)" download="meme.png">Download</a>
+
                 </section>
             </section>
         </main>
 
         <!-- Footer -->
         <footer class="main-footer main-layout flex column">
-            <div class="brand">Meem</div>
+            <div class="brand">Meem&trade;</div>
             <small>All rights reserved 2022</small>
         </footer>
     </div>
