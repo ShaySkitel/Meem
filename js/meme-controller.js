@@ -25,11 +25,11 @@ function renderMeme() {
 
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
-        renderTxt({txt, txtColor, txtAlign, txtSize}, gElCanvas.width / 2, gElCanvas.height / 2)
+        renderTxt({ txt, txtColor, txtAlign, txtSize }, gElCanvas.width / 2, gElCanvas.height / 2)
     }
 }
 
-function renderTxt({txt, txtColor, txtAlign, txtSize}, x, y) {
+function renderTxt({ txt, txtColor, txtAlign, txtSize }, x, y) {
     gCtx.strokeStyle = 'black'
     gCtx.fillStyle = txtColor
     gCtx.font = `${txtSize}px Impact`
@@ -40,12 +40,17 @@ function renderTxt({txt, txtColor, txtAlign, txtSize}, x, y) {
     gCtx.strokeText(txt, x, y)
 }
 
-function onChangeTxt(txt){
+function onChangeTxt(txt) {
     setLineTxt(txt)
     renderMeme()
 }
 
-function onSelectColor(color){
+function onSelectColor(color) {
     setColor(color)
+    renderMeme()
+}
+
+function onChangeFontSize(diff) {
+    setFontSize(diff)
     renderMeme()
 }

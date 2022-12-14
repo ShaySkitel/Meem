@@ -4,7 +4,7 @@
 /* vars */
 :root {
     --primary-bgc: #ff7f00;
-    --body-bgc: #eee;
+    --body-bgc: #e3e3e3;
     --primary-color: #ffffff;
 }
 
@@ -77,7 +77,7 @@ body.editor-open .editor-container {
     max-width: fit-content;
 }
 
-.toolbox-container .select-color {
+.toolbox-container .option {
     width: 60px;
     height: 60px;
     background-color: var(--primary-color);
@@ -87,9 +87,10 @@ body.editor-open .editor-container {
     border-radius: 1em;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 }
 
-.toolbox-container .select-color img {
+.toolbox-container .option img {
     width: 70%;
 }
 

@@ -57,3 +57,7 @@ function setImg(id){
 function setColor(color){
     gMeme.lines[gMeme.selectedLineIdx].color = color
 }
+
+function setFontSize(diff){
+    gMeme.lines[gMeme.selectedLineIdx].size += diff
+}

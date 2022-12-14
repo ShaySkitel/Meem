@@ -38,9 +38,15 @@
                 </div>
                 <section class="toolbox-container flex column">
                     <input oninput="onChangeTxt(this.value)" type="text" placeholder="Meme text">
-                    <div class="select-color">
+                    <div title="Change fill color" class="option select-color">
                         <img src="images/UI/paint-board-and-brush.png">
                         <input oninput="onSelectColor(this.value)" type="color">
+                    </div>
+                    <div onclick="onChangeFontSize(1)" title="Increase font size" class="option increase-font">
+                        <img src="images/UI/increase font - icon.png">
+                    </div>
+                    <div onclick="onChangeFontSize(-1)" title="Decrease font size" class="option decrease-font">
+                        <img src="images/UI/decrease font - icon.png">
                     </div>
                 </section>
             </section>
