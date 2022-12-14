@@ -8,8 +8,22 @@ let gCtx
 function onEditorInit() {
     gElCanvas = document.querySelector('.canvas-container canvas')
     gCtx = gElCanvas.getContext('2d')
-    renderMeme()
     setInputValue()
+    setCanvasSize()
+    renderMeme()
+    window.onresize = () => {
+        setCanvasSize()
+        renderMeme()
+    }
+}
+
+function setCanvasSize(){
+    if(window.innerWidth > 518) {
+        gElCanvas.width = 500
+        gElCanvas.height = 500
+    }
+    gElCanvas.width = document.querySelector('.canvas-container').offsetWidth
+    gElCanvas.height = gElCanvas.width
 }
 
 function renderMeme() {

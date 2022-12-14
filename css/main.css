@@ -69,6 +69,11 @@ small {
 }
 
 /* components */
+.canvas-container {
+    width: 300px;
+    height: fit-content;
+}
+
 .card {
     cursor: pointer;
 }
@@ -113,6 +118,12 @@ small {
 
 .filter-container * {
     color: inherit;
+    text-align: center;
+}
+
+.filter-container div {
+    flex-direction: column;
+    align-items: center;
 }
 
 .about-container {
@@ -120,13 +131,17 @@ small {
     padding: 4em;
 }
 
+.about-container div {
+    flex-direction: column;
+    align-items: center;
+}
+
 .about-container .about-text {
-    padding: 0 2em;
+    padding: 2em 0;
 }
 
 .about-container .profile-img {
-    min-width: 320px;
-    height: 320px;
+    max-width: 400px;
 }
 
 .about-container .profile-img img {
@@ -139,9 +154,10 @@ small {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto-fit 1fr;
+    min-height: 100%;
+    height: fit-content;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
     padding: 1.375rem 0;
     transform: translateX(100%);
     transition: transform 0.2s ease-in-out;
@@ -272,7 +288,7 @@ body.editor-open .editor-container {
 }
 
 .toolbox-container .option {
-    width: 60px;
+    max-width: 60px;
     height: 60px;
     background-color: var(--primary-color);
     display: flex;
@@ -294,7 +310,7 @@ body.editor-open .editor-container {
 }
 
 .toolbox-container .option img {
-    width: 70%;
+    width: 50%;
 }
 
 .toolbox-container .select-color input {
@@ -340,4 +356,50 @@ body.editor-open .editor-container {
     list-style-type: none;
     padding: 0;
     margin: 0;
+}
+
+@media screen and (min-width: 518px) {
+    .canvas-container {
+        width: initial;
+        height: fit-content;
+    }
+}
+
+@media screen and (min-width: 968px) {
+    .about-container div {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .about-container .about-text {
+        padding: 0 2em;
+    }
+    
+    .about-container .profile-img {
+        min-width: 320px;
+        height: 320px;
+    }
+
+    .filter-container div {
+        flex-direction: row;
+    }
+
+    .editor-container {
+        background-color: var(--body-bgc);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto-fit 1fr;
+        padding: 1.375rem 0;
+        transform: translateX(100%);
+        transition: transform 0.2s ease-in-out;
+        pointer-events: none;
+    }
+
+    .toolbox-container .option img {
+        width: 70%;
+    }
 }
