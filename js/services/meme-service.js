@@ -26,13 +26,13 @@ let gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: 'I sometimes eat Falafel',
+            txt: 'Placeholder',
             size: 30,
-            align: 'left',
-            color: 'red'
+            align: 'center',
+            color: 'white'
         },
         {
-            txt: 'Shut up',
+            txt: 'Placeholder',
             size: 30,
             align: 'center',
             color: 'white'

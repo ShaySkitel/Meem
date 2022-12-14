@@ -8,10 +8,30 @@
     --primary-color: #ffffff;
 }
 
+/* setup */
+
+/* font faces */
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("/fonts/montserrat/Montserrat-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Montserrat-thin";
+    src: url("/fonts/montserrat/Montserrat-Thin.ttf");
+}
+
 /* basics */
+html {
+    font-size: 19px;
+}
+
+
 body {
     min-height: 100vh;
     background-color: var(--body-bgc);
+    font-family: Montserrat, sans-serif;
 }
 
 .container {
@@ -44,6 +64,13 @@ small {
 /* components */
 .card {
     cursor: pointer;
+}
+
+.main-nav a {
+    display: block;
+    padding: 1.25em 1em;
+    color: var(--primary-color);
+    text-decoration: none;
 }
 
 .editor-container {
