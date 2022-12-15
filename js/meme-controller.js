@@ -59,12 +59,12 @@ function renderMeme() {
 function renderTxt() {
     const meme = getMeme()
     meme.lines.forEach((line, idx) => {
-        const {txt, color, align, size} = meme.lines[idx]
+        const {txt, color, align, size, font} = meme.lines[idx]
 
-        gCtx.lineWidth = size * 0.05
+        gCtx.lineWidth = size * 0.03
         gCtx.strokeStyle = 'black'
         gCtx.fillStyle = color
-        gCtx.font = `${size}px Impact`
+        gCtx.font = `${size}px ${font}`
         gCtx.textAlign = align
         
         if(idx === 0){
@@ -111,5 +111,10 @@ function downloadImage(elLink){
 
 function onSetAlignment(alignment){
     setLineAlignment(alignment)
+    renderMeme()
+}
+
+function onSetFont(font){
+    setLineFont(font)
     renderMeme()
 }

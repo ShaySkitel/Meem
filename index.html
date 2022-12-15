@@ -99,8 +99,10 @@
                         <img src="images/UI/align-to-right.png">
                     </div>
 
-                    <select title="Change font family" class="font-style">
+                    <select onchange="onSetFont(this.value)" title="Change font family" class="font-style">
                         <option value="Impact">Impact</option>
+                        <option value="Arial">Arial</option>
+                        <option value="Montserrat">Montserrat</option>
                     </select>
 
                     <div title="Change outline color" class="option disabled outline-color">

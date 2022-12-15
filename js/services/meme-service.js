@@ -30,13 +30,15 @@ let gMeme = {
             txt: 'Placeholder',
             size: 30,
             align: 'center',
-            color: 'white'
+            color: 'white',
+            font: 'Impact'
         },
         {
             txt: 'Placeholder',
             size: 30,
             align: 'center',
-            color: 'white'
+            color: 'white',
+            font: 'Impact'
         }
     ]
 }
@@ -88,4 +90,8 @@ function setSearch(query) {
 
 function setLineAlignment(alignment){
     gMeme.lines[gMeme.selectedLineIdx].align = alignment
+}
+
+function setLineFont(font){
+    gMeme.lines[gMeme.selectedLineIdx].font = font
 }
