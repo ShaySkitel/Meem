@@ -118,3 +118,12 @@ function addLine() {
     }
     gMeme.lines.push(newLine)
 }
+
+function getSelectedLine(){
+    return gMeme.lines[gMeme.selectedLineIdx]
+}
+
+function selectLine(selectedLine){
+    const lineIdx = gMeme.lines.findIndex(line => line === selectedLine)
+    gMeme.selectedLineIdx = lineIdx
+}

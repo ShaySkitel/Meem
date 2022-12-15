@@ -15,18 +15,6 @@ function onEditorInit() {
         setCanvasSize()
         renderMeme()
     }
-
-    gElCanvas.onmouseup = () => {
-        const selection = window.getSelection();
-        const range = selection.getRangeAt(0);
-
-        // Calculate the bounding rectangle of the selected text
-        const rect = range.getBoundingClientRect();
-
-        // Draw a rectangle around the selected text
-        gCtx.strokeStyle = "red";
-        gCtx.strokeRect(rect.left, rect.top, rect.width, rect.height);
-    }
 }
 
 function setCanvasSize() {
@@ -52,6 +40,7 @@ function renderMeme() {
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
         renderTxt()
+        renderSelection(getSelectedLine())
         // renderTxt({ txt, txtColor, txtAlign, txtSize }, gElCanvas.width / 2, gElCanvas.height / 2)
     }
 }
@@ -66,17 +55,21 @@ function renderTxt() {
         gCtx.fillStyle = color
         gCtx.font = `${size}px ${font}`
         gCtx.textAlign = align
+        gCtx.textBaseline = 'top'
 
         if (!line.position) {
             switch (idx) {
                 case 0:
-                    line.position = { x: gElCanvas.width / 2, y: 40 }
+                    line.position = { x: gElCanvas.width / 2, y: 20 }
+                    line.selectionPos = {xStart: 0, yStart: line.position.y, xEnd: gElCanvas.width, yEnd: line.size}
                     break
                 case 1:
-                    line.position = { x: gElCanvas.width / 2, y: gElCanvas.height - 20 }
+                    line.position = { x: gElCanvas.width / 2, y: gElCanvas.height - 40 }
+                    line.selectionPos = {xStart: 0, yStart: line.position.y, xEnd: gElCanvas.width, yEnd: line.size}
                     break
                 default:
                     line.position = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
+                    line.selectionPos = {xStart: 0, yStart: line.position.y, xEnd: gElCanvas.width, yEnd: line.size}
                     break
             }
         }
@@ -141,7 +134,32 @@ function onDeleteLine() {
     renderMeme()
 }
 
-function onAddLine(){
+function onAddLine() {
     addLine()
     renderMeme()
+}
+
+function onCanvasClicked(ev) {
+    const { offsetX, offsetY } = ev
+    const line = gMeme.lines.find(line => {
+        return (
+            offsetY >= line.position.y && offsetY <= line.position.y + line.size
+        )
+    })
+
+    selectLine(line)
+
+    if (line) {
+        renderMeme()
+        setInputValue()
+    }
+    console.log(line)
+}
+
+function renderSelection(line){
+    const {xStart, yStart, xEnd, yEnd} = line.selectionPos
+    gCtx.strokeStyle = '#000000'
+    gCtx.strokeRect(xStart, yStart, xEnd, yEnd)
+    gCtx.fillStyle = '#00000033'
+    gCtx.fillRect(xStart, yStart, xEnd, yEnd)
 }
