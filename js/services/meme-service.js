@@ -111,10 +111,10 @@ function deleteLine() {
     setCurrentLine()
 }
 
-function addLine() {
+function addLine(txt = 'Placeholder', size = 30) {
     const newLine = {
-        txt: 'Placeholder',
-        size: 30,
+        txt,
+        size,
         align: 'center',
         color: 'white',
         outlineColor: 'black',

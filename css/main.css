@@ -119,6 +119,20 @@ small {
     font-size: 1.2rem;
 }
 
+.add-sticker {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.add-sticker .sticker {
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
 .filter-container * {
     color: inherit;
     text-align: center;
@@ -368,6 +382,10 @@ body.editor-open .editor-container {
     .canvas-container {
         width: initial;
         height: fit-content;
+    }
+
+    .add-sticker .sticker {
+        font-size: 3rem;
     }
 }
 

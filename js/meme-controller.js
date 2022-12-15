@@ -209,6 +209,8 @@ function onCanvasClicked(ev) {
         selectLine(line)
         renderCanvases()
         setInputValue()
+    } else {
+        renderMeme(gCtx, false)
     }
     // console.log(line)
 }
@@ -252,4 +254,9 @@ function getEvPos(ev) {
         onCanvasClicked(pos)
     }
     return pos
+}
+
+function onAddSticker(sticker){
+    addLine(sticker, 80)
+    renderCanvases()
 }
