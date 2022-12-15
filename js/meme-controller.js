@@ -159,7 +159,7 @@ function onCanvasClicked(ev) {
 
 function renderSelection(line){
     const {xStart, yStart, xEnd, yEnd} = line.selectionPos
-    gCtx.strokeStyle = '#000000'
+    gCtx.strokeStyle = '#FFFFFF'
     gCtx.strokeRect(xStart, yStart, xEnd, yEnd)
     gCtx.fillStyle = '#00000033'
     gCtx.fillRect(xStart, yStart, xEnd, yEnd)
