@@ -83,5 +83,5 @@ function setCurrentLine(){
 }
 
 function setSearch(query) {
-    gSearchQuery = query
+    gSearchQuery = query.toLowerCase()
 }
