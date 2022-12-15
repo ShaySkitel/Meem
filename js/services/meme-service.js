@@ -85,3 +85,7 @@ function setCurrentLine(){
 function setSearch(query) {
     gSearchQuery = query.toLowerCase()
 }
+
+function setLineAlignment(alignment){
+    gMeme.lines[gMeme.selectedLineIdx].align = alignment
+}

@@ -66,7 +66,6 @@ function renderTxt() {
         gCtx.fillStyle = color
         gCtx.font = `${size}px Impact`
         gCtx.textAlign = align
-        gCtx.textBaseline = align
         
         if(idx === 0){
             gCtx.fillText(txt, gElCanvas.width / 2, 40)
@@ -108,4 +107,9 @@ function setInputValue(){
 function downloadImage(elLink){
     const imgData = gElCanvas.toDataURL('image/png')
     elLink.href = imgData
+}
+
+function onSetAlignment(alignment){
+    setLineAlignment(alignment)
+    renderMeme()
 }
