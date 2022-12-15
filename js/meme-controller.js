@@ -146,14 +146,13 @@ function onCanvasClicked(ev) {
             offsetY >= line.position.y && offsetY <= line.position.y + line.size
         )
     })
-
-    selectLine(line)
-
+    
     if (line) {
+        selectLine(line)
         renderMeme()
         setInputValue()
     }
-    console.log(line)
+    // console.log(line)
 }
 
 function renderSelection(line){
