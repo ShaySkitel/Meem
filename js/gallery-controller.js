@@ -1,7 +1,20 @@
 'use strict'
 
 function onGalleryInit(){
+    renderKeywordFilters()
     renderGallery()
+}
+
+function renderKeywordFilters(){
+    const keywordsMap = getKeywordsMap()
+    const keyWords = Object.keys(keywordsMap)
+    const strHTMLs = keyWords.map(keyword => {
+        const keywordSize = keywordsMap[keyword] * 1.5 > 30 ? 30 : keywordsMap[keyword] * 1.5
+        return `<li>
+                    <a style="font-size: ${keywordSize}px;" onclick="onKeywordFilter('${keyword}')" href="#">${keyword}</a>
+                </li>`
+    })
+    document.querySelector('.keywords-filter').innerHTML = strHTMLs.join('')
 }
 
 function renderGallery(){
@@ -13,6 +26,15 @@ function renderGallery(){
     })
     const elContainer = document.querySelector('.gallery-container')
     elContainer.innerHTML = strHTMLs.join('')
+}
+
+function onKeywordFilter(keyword) {
+    const keywordsMap = getKeywordsMap()
+    setSearch(keyword)
+    keywordsMap[keyword]++
+    renderKeywordFilters()
+    document.querySelector('.search-input').value = keyword
+    renderGallery()
 }
 
 function onImgSelect(id){

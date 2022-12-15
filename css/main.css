@@ -82,7 +82,9 @@ small {
 }
 
 .search-input {
-    border: none;
+    /* border: none; */
+    border-radius: 1em;
+    padding-inline-start: 0.5em;
 }
 
 .main-nav a {
@@ -131,6 +133,31 @@ small {
     align-items: center;
     cursor: pointer;
     user-select: none;
+}
+
+.keywords-filter {
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.keywords-filter a {
+    text-decoration: none;
+    margin-inline-end: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.keywords-filter li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.keywords-filter li:last-of-type a {
+    margin-inline-end: 0;
 }
 
 .filter-container * {

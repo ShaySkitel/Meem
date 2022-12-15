@@ -1,7 +1,6 @@
 'use strict'
 
 const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
-let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 let gElCanvas
 let gCtx
@@ -119,11 +118,11 @@ function renderTxt(ctx) {
         if (!line.position) {
             switch (idx) {
                 case 0:
-                    line.position = { x: gElCanvas.width / 2, y: 20 }
+                    line.position = { x: gElCanvas.width / 2, y: 10 }
                     line.selectionPos = { xStart: 0, yStart: line.position.y, xEnd: gElCanvas.width, yEnd: line.size }
                     break
                 case 1:
-                    line.position = { x: gElCanvas.width / 2, y: gElCanvas.height - 40 }
+                    line.position = { x: gElCanvas.width / 2, y: gElCanvas.height - 50 }
                     line.selectionPos = { xStart: 0, yStart: line.position.y, xEnd: gElCanvas.width, yEnd: line.size }
                     break
                 default:

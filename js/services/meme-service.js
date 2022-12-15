@@ -1,6 +1,7 @@
 'use strict'
 
 let gSearchQuery = ''
+let gKeywordSearchCountMap = { 'funny': 12, 'puppy': 16, 'baby': 8, 'president': 10}
 let gImgs = [
     { id: 1, url: 'images/1.jpg', keywords: ['funny', 'trump', 'man', 'president', 'united states'] },
     { id: 2, url: 'images/2.jpg', keywords: ['cute', 'dog', 'puppy', 'puppies', 'labrador'] },
@@ -24,6 +25,10 @@ let gImgs = [
 
 let gMeme
 
+function getKeywordsMap(){
+    return gKeywordSearchCountMap
+}
+
 function resetMeme(){
     gMeme = {
         selectedImgId: 1,
@@ -31,7 +36,7 @@ function resetMeme(){
         lines: [
             {
                 txt: 'Placeholder',
-                size: 30,
+                size: 40,
                 align: 'center',
                 color: 'white',
                 outlineColor: 'black',
@@ -39,7 +44,7 @@ function resetMeme(){
             },
             {
                 txt: 'Placeholder',
-                size: 30,
+                size: 40,
                 align: 'center',
                 color: 'white',
                 outlineColor: 'black',
@@ -111,7 +116,7 @@ function deleteLine() {
     setCurrentLine()
 }
 
-function addLine(txt = 'Placeholder', size = 30) {
+function addLine(txt = 'Placeholder', size = 40) {
     const newLine = {
         txt,
         size,
