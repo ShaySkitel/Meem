@@ -52,7 +52,7 @@ function onMove(ev) {
     const { offsetX, offsetY } = getEvPos(ev)
     if (gDraggingLine.isDragging) {
         gDraggingLine.position.x = offsetX
-        gDraggingLine.position.y = offsetY
+        gDraggingLine.position.y = offsetY - (gDraggingLine.size / 2)
         gDraggingLine.selectionPos = { xStart: 0, yStart: gDraggingLine.position.y, xEnd: gElCanvas.width, yEnd: gDraggingLine.size }
         renderCanvases()
         // { x: gElCanvas.width / 2, y: 20 }
@@ -222,6 +222,7 @@ function findSelectedLine(offsetX, offsetY) {
 }
 
 function renderSelection(line) {
+    if(!line) return
     const { xStart, yStart, xEnd, yEnd } = line.selectionPos
     gCtx.strokeStyle = '#FFFFFF'
     gCtx.strokeRect(xStart, yStart, xEnd, yEnd)
