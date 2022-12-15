@@ -14,13 +14,13 @@ let gImgs = [
     { id: 9, url: 'images/9.jpg', keywords: ['funny', 'baby'] },
     { id: 10, url: 'images/10.jpg', keywords: ['funny', 'united states', 'president', 'man', 'obama'] },
     { id: 11, url: 'images/11.jpg', keywords: ['man', 'men'] },
-    { id: 12, url: 'images/12.jpg', keywords: ['funny', 'cat'] },
-    { id: 13, url: 'images/13.jpg', keywords: ['funny', 'cat'] },
-    { id: 14, url: 'images/14.jpg', keywords: ['funny', 'cat'] },
-    { id: 15, url: 'images/15.jpg', keywords: ['funny', 'cat'] },
-    { id: 16, url: 'images/16.jpg', keywords: ['funny', 'cat'] },
+    { id: 12, url: 'images/12.jpg', keywords: ['funny', 'man'] },
+    { id: 13, url: 'images/13.jpg', keywords: ['funny', 'man', 'leonardo dicaprio'] },
+    { id: 14, url: 'images/14.jpg', keywords: ['funny', 'man', 'matrix'] },
+    { id: 15, url: 'images/15.jpg', keywords: ['funny', 'man', 'sean bean', 'lord of the rings', 'lotr'] },
+    { id: 16, url: 'images/16.jpg', keywords: ['funny', 'man', 'patrick stewart', 'star trek'] },
     { id: 17, url: 'images/17.jpg', keywords: ['president', 'serious', 'russia'] },
-    { id: 18, url: 'images/18.jpg', keywords: ['funny', 'cat'] }
+    { id: 18, url: 'images/18.jpg', keywords: ['funny', 'toy', 'toy story', 'buzz lightyear'] }
 ];
 
 let gMeme
