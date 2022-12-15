@@ -45,20 +45,20 @@ let gMeme = {
     ]
 }
 
-function getMeme(){
+function getMeme() {
     return gMeme
 }
 
-function getMemeImg(){
+function getMemeImg() {
     return gImgs.find(img => img.id === gMeme.selectedImgId).url
 }
 
-function setLineTxt(txt){
+function setLineTxt(txt) {
     gMeme.lines[gMeme.selectedLineIdx].txt = txt
 }
 
-function getImgs(){
-    if(!gSearchQuery) return gImgs
+function getImgs() {
+    if (!gSearchQuery) return gImgs
     return gImgs.filter(img => {
         // return img.keywords.includes(gSearchQuery)
         return img.keywords.some(keyword => keyword.includes(gSearchQuery))
@@ -66,20 +66,20 @@ function getImgs(){
 }
 
 
-function setImg(id){
+function setImg(id) {
     gMeme.selectedImgId = id
 }
 
-function setColor(color){
+function setColor(color) {
     gMeme.lines[gMeme.selectedLineIdx].color = color
 }
 
-function setFontSize(diff){
+function setFontSize(diff) {
     gMeme.lines[gMeme.selectedLineIdx].size += diff
 }
 
-function setCurrentLine(){
-    if(!gMeme.lines[gMeme.selectedLineIdx + 1]) {
+function setCurrentLine() {
+    if (!gMeme.lines[gMeme.selectedLineIdx + 1]) {
         gMeme.selectedLineIdx = 0
         return
     }
@@ -90,19 +90,31 @@ function setSearch(query) {
     gSearchQuery = query.toLowerCase()
 }
 
-function setLineAlignment(alignment){
+function setLineAlignment(alignment) {
     gMeme.lines[gMeme.selectedLineIdx].align = alignment
 }
 
-function setLineFont(font){
+function setLineFont(font) {
     gMeme.lines[gMeme.selectedLineIdx].font = font
 }
 
-function setOutlineColor(color){
+function setOutlineColor(color) {
     gMeme.lines[gMeme.selectedLineIdx].outlineColor = color
 }
 
-function deleteLine(){
+function deleteLine() {
     gMeme.lines.splice(gMeme.selectedLineIdx, 1)
     setCurrentLine()
+}
+
+function addLine() {
+    const newLine = {
+        txt: 'Placeholder',
+        size: 30,
+        align: 'center',
+        color: 'white',
+        outlineColor: 'black',
+        font: 'Impact'
+    }
+    gMeme.lines.push(newLine)
 }

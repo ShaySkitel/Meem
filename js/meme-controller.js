@@ -140,3 +140,8 @@ function onDeleteLine() {
     setInputValue()
     renderMeme()
 }
+
+function onAddLine(){
+    addLine()
+    renderMeme()
+}
