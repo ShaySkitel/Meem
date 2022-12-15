@@ -23,8 +23,8 @@ function setCanvasSize() {
         gElCanvas.height = 500
     }
     if (window.innerWidth > 1220) {
-        gElCanvas.width = 700
-        gElCanvas.height = 700
+        gElCanvas.width = 600
+        gElCanvas.height = 600
     }
     gElCanvas.width = document.querySelector('.canvas-container').offsetWidth
     gElCanvas.height = gElCanvas.width
