@@ -91,7 +91,9 @@ function onSelectColor(color) {
 }
 
 function onChangeFontSize(diff) {
+    const line = getSelectedLine()
     setFontSize(diff)
+    line.selectionPos = {xStart: 0, yStart: line.position.y, xEnd: gElCanvas.width, yEnd: line.size}
     renderMeme()
 }
 
