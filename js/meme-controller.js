@@ -59,10 +59,10 @@ function renderMeme() {
 function renderTxt() {
     const meme = getMeme()
     meme.lines.forEach((line, idx) => {
-        const {txt, color, align, size, font} = meme.lines[idx]
+        const {txt, color, align, size, font, outlineColor} = meme.lines[idx]
 
         gCtx.lineWidth = size * 0.03
-        gCtx.strokeStyle = 'black'
+        gCtx.strokeStyle = outlineColor
         gCtx.fillStyle = color
         gCtx.font = `${size}px ${font}`
         gCtx.textAlign = align
@@ -116,5 +116,10 @@ function onSetAlignment(alignment){
 
 function onSetFont(font){
     setLineFont(font)
+    renderMeme()
+}
+
+function onSelectOutlineColor(color){
+    setOutlineColor(color)
     renderMeme()
 }

@@ -31,6 +31,7 @@ let gMeme = {
             size: 30,
             align: 'center',
             color: 'white',
+            outlineColor: 'black',
             font: 'Impact'
         },
         {
@@ -38,6 +39,7 @@ let gMeme = {
             size: 30,
             align: 'center',
             color: 'white',
+            outlineColor: 'black',
             font: 'Impact'
         }
     ]
@@ -94,4 +96,8 @@ function setLineAlignment(alignment){
 
 function setLineFont(font){
     gMeme.lines[gMeme.selectedLineIdx].font = font
+}
+
+function setOutlineColor(color){
+    gMeme.lines[gMeme.selectedLineIdx].outlineColor = color
 }
