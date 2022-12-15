@@ -127,3 +127,7 @@ function selectLine(selectedLine){
     const lineIdx = gMeme.lines.findIndex(line => line === selectedLine)
     gMeme.selectedLineIdx = lineIdx
 }
+
+function getMemeLines(){
+    return gMeme.lines
+}

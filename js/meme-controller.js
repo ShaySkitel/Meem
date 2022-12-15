@@ -1,5 +1,6 @@
 'use strict'
 
+const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
 let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 let gElCanvas
@@ -7,6 +8,7 @@ let gCtx
 
 let gElDownloadCanvas
 let gDownloadCtx
+let gDraggingLine
 
 function onEditorInit() {
     gElCanvas = document.querySelector('.canvas-container canvas')
@@ -16,10 +18,51 @@ function onEditorInit() {
     setInputValue()
     setCanvasSize()
     renderCanvases()
+    addEventListeners()
+}
+
+function addEventListeners() {
     window.onresize = () => {
         setCanvasSize()
         renderCanvases()
     }
+
+    gElCanvas.addEventListener('mousedown', onDown)
+    gElCanvas.addEventListener('mousemove', onMove)
+    gElCanvas.addEventListener('mouseup', onUp)
+
+    gElCanvas.addEventListener('touchstart', onDown)
+    gElCanvas.addEventListener('touchmove', onMove)
+    gElCanvas.addEventListener('touchend', onUp)
+
+    gElCanvas.addEventListener('click', onCanvasClicked)
+}
+
+function onDown(ev) {
+    const { offsetX, offsetY } = getEvPos(ev)
+    const line = findSelectedLine(offsetX, offsetY)
+    if (line) {
+        line.isDragging = true
+        gDraggingLine = line
+    }
+}
+
+function onMove(ev) {
+    if (!gDraggingLine) return
+    const { offsetX, offsetY } = getEvPos(ev)
+    if (gDraggingLine.isDragging) {
+        gDraggingLine.position.x = offsetX
+        gDraggingLine.position.y = offsetY
+        gDraggingLine.selectionPos = { xStart: 0, yStart: gDraggingLine.position.y, xEnd: gElCanvas.width, yEnd: gDraggingLine.size }
+        renderCanvases()
+        // { x: gElCanvas.width / 2, y: 20 }
+    }
+}
+
+function onUp() {
+    if (!gDraggingLine) return
+    gDraggingLine.isDragging = false
+    gDraggingLine = null
 }
 
 function setCanvasSize() {
@@ -41,7 +84,7 @@ function setCanvasSize() {
     gElDownloadCanvas.height = gElDownloadCanvas.width
 }
 
-function renderCanvases(){
+function renderCanvases() {
     renderMeme()
     renderMeme(gDownloadCtx, false)
 }
@@ -55,7 +98,7 @@ function renderMeme(ctx = gCtx, withSelection = true) {
     elImg.onload = () => {
         ctx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
         renderTxt(ctx)
-        if(withSelection) renderSelection(getSelectedLine())
+        if (withSelection) renderSelection(getSelectedLine())
         // renderTxt({ txt, txtColor, txtAlign, txtSize }, gElCanvas.width / 2, gElCanvas.height / 2)
     }
 }
@@ -76,15 +119,15 @@ function renderTxt(ctx) {
             switch (idx) {
                 case 0:
                     line.position = { x: gElCanvas.width / 2, y: 20 }
-                    line.selectionPos = {xStart: 0, yStart: line.position.y, xEnd: gElCanvas.width, yEnd: line.size}
+                    line.selectionPos = { xStart: 0, yStart: line.position.y, xEnd: gElCanvas.width, yEnd: line.size }
                     break
                 case 1:
                     line.position = { x: gElCanvas.width / 2, y: gElCanvas.height - 40 }
-                    line.selectionPos = {xStart: 0, yStart: line.position.y, xEnd: gElCanvas.width, yEnd: line.size}
+                    line.selectionPos = { xStart: 0, yStart: line.position.y, xEnd: gElCanvas.width, yEnd: line.size }
                     break
                 default:
                     line.position = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
-                    line.selectionPos = {xStart: 0, yStart: line.position.y, xEnd: gElCanvas.width, yEnd: line.size}
+                    line.selectionPos = { xStart: 0, yStart: line.position.y, xEnd: gElCanvas.width, yEnd: line.size }
                     break
             }
         }
@@ -108,7 +151,7 @@ function onSelectColor(color) {
 function onChangeFontSize(diff) {
     const line = getSelectedLine()
     setFontSize(diff)
-    line.selectionPos = {xStart: 0, yStart: line.position.y, xEnd: gElCanvas.width, yEnd: line.size}
+    line.selectionPos = { xStart: 0, yStart: line.position.y, xEnd: gElCanvas.width, yEnd: line.size }
     renderCanvases()
 }
 
@@ -158,12 +201,9 @@ function onAddLine() {
 
 function onCanvasClicked(ev) {
     const { offsetX, offsetY } = ev
-    const line = gMeme.lines.find(line => {
-        return (
-            offsetY >= line.position.y && offsetY <= line.position.y + line.size
-        )
-    })
-    
+
+    const line = findSelectedLine(offsetX, offsetY)
+
     if (line) {
         selectLine(line)
         renderCanvases()
@@ -172,10 +212,42 @@ function onCanvasClicked(ev) {
     // console.log(line)
 }
 
-function renderSelection(line){
-    const {xStart, yStart, xEnd, yEnd} = line.selectionPos
+function findSelectedLine(offsetX, offsetY) {
+    const memeLines = getMemeLines()
+    return memeLines.find(line => {
+        return (
+            offsetY >= line.position.y && offsetY <= line.position.y + line.size
+        )
+    })
+}
+
+function renderSelection(line) {
+    const { xStart, yStart, xEnd, yEnd } = line.selectionPos
     gCtx.strokeStyle = '#FFFFFF'
     gCtx.strokeRect(xStart, yStart, xEnd, yEnd)
     gCtx.fillStyle = '#00000033'
     gCtx.fillRect(xStart, yStart, xEnd, yEnd)
+}
+
+function getEvPos(ev) {
+    // Gets the offset pos , the default pos
+    let pos = {
+        offsetX: ev.offsetX,
+        offsetY: ev.offsetY,
+    }
+    // Check if its a touch ev
+    if (TOUCH_EVS.includes(ev.type)) {
+        //soo we will not trigger the mouse ev
+        ev.preventDefault()
+        //Gets the first touch point
+        ev = ev.changedTouches[0]
+        //Calc the right pos according to the touch screen
+        let rect = gElCanvas.getBoundingClientRect()
+        pos = {
+            offsetX: ev.clientX - rect.left,
+            offsetY: ev.clientY - rect.top
+        }
+        onCanvasClicked(pos)
+    }
+    return pos
 }
