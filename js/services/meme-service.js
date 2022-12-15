@@ -101,3 +101,8 @@ function setLineFont(font){
 function setOutlineColor(color){
     gMeme.lines[gMeme.selectedLineIdx].outlineColor = color
 }
+
+function deleteLine(){
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+    setCurrentLine()
+}

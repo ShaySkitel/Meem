@@ -19,22 +19,22 @@ function onEditorInit() {
     gElCanvas.onmouseup = () => {
         const selection = window.getSelection();
         const range = selection.getRangeAt(0);
-    
+
         // Calculate the bounding rectangle of the selected text
         const rect = range.getBoundingClientRect();
-    
+
         // Draw a rectangle around the selected text
         gCtx.strokeStyle = "red";
         gCtx.strokeRect(rect.left, rect.top, rect.width, rect.height);
     }
 }
 
-function setCanvasSize(){
-    if(window.innerWidth > 518) {
+function setCanvasSize() {
+    if (window.innerWidth > 518) {
         gElCanvas.width = 500
         gElCanvas.height = 500
-    } 
-     if(window.innerWidth > 1220) {
+    }
+    if (window.innerWidth > 1220) {
         gElCanvas.width = 700
         gElCanvas.height = 700
     }
@@ -43,7 +43,7 @@ function setCanvasSize(){
 }
 
 function renderMeme() {
-    
+
     const memeImgPath = getMemeImg()
 
     const elImg = new Image()
@@ -59,21 +59,31 @@ function renderMeme() {
 function renderTxt() {
     const meme = getMeme()
     meme.lines.forEach((line, idx) => {
-        const {txt, color, align, size, font, outlineColor} = meme.lines[idx]
+        const { txt, color, align, size, font, outlineColor } = meme.lines[idx]
 
         gCtx.lineWidth = size * 0.03
         gCtx.strokeStyle = outlineColor
         gCtx.fillStyle = color
         gCtx.font = `${size}px ${font}`
         gCtx.textAlign = align
-        
-        if(idx === 0){
-            gCtx.fillText(txt, gElCanvas.width / 2, 40)
-            gCtx.strokeText(txt, gElCanvas.width / 2, 40)
-        } else {
-            gCtx.fillText(txt, gElCanvas.width / 2, gElCanvas.height - 20)
-            gCtx.strokeText(txt, gElCanvas.width / 2, gElCanvas.height - 20)
+
+        if (!line.position) {
+            switch (idx) {
+                case 0:
+                    line.position = { x: gElCanvas.width / 2, y: 40 }
+                    break
+                case 1:
+                    line.position = { x: gElCanvas.width / 2, y: gElCanvas.height - 20 }
+                    break
+                default:
+                    line.position = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
+                    break
+            }
         }
+
+        gCtx.fillText(txt, line.position.x, line.position.y)
+        gCtx.strokeText(txt, line.position.x, line.position.y)
+
     })
 }
 
@@ -92,34 +102,41 @@ function onChangeFontSize(diff) {
     renderMeme()
 }
 
-function onChangeLine(){
+function onChangeLine() {
     setCurrentLine()
     renderMeme()
     setInputValue()
 }
 
-function setInputValue(){
+function setInputValue() {
+    if (!gMeme.lines || !gMeme.lines.length) return
     const elInput = document.querySelector('.meme-text')
     const meme = getMeme()
     elInput.value = meme.lines[meme.selectedLineIdx].txt
 }
 
-function downloadImage(elLink){
+function downloadImage(elLink) {
     const imgData = gElCanvas.toDataURL('image/png')
     elLink.href = imgData
 }
 
-function onSetAlignment(alignment){
+function onSetAlignment(alignment) {
     setLineAlignment(alignment)
     renderMeme()
 }
 
-function onSetFont(font){
+function onSetFont(font) {
     setLineFont(font)
     renderMeme()
 }
 
-function onSelectOutlineColor(color){
+function onSelectOutlineColor(color) {
     setOutlineColor(color)
+    renderMeme()
+}
+
+function onDeleteLine() {
+    deleteLine()
+    setInputValue()
     renderMeme()
 }
