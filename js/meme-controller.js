@@ -5,15 +5,20 @@ let gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 let gElCanvas
 let gCtx
 
+let gElDownloadCanvas
+let gDownloadCtx
+
 function onEditorInit() {
     gElCanvas = document.querySelector('.canvas-container canvas')
     gCtx = gElCanvas.getContext('2d')
+    gElDownloadCanvas = document.querySelector('.downloading-canvas')
+    gDownloadCtx = gElDownloadCanvas.getContext('2d')
     setInputValue()
     setCanvasSize()
-    renderMeme()
+    renderCanvases()
     window.onresize = () => {
         setCanvasSize()
-        renderMeme()
+        renderCanvases()
     }
 }
 
@@ -21,41 +26,51 @@ function setCanvasSize() {
     if (window.innerWidth > 518) {
         gElCanvas.width = 500
         gElCanvas.height = 500
+        gElDownloadCanvas.height = 500
+        gElDownloadCanvas.width = 500
     }
     if (window.innerWidth > 1220) {
         gElCanvas.width = 600
         gElCanvas.height = 600
+        gElDownloadCanvas.height = 600
+        gElDownloadCanvas.width = 600
     }
     gElCanvas.width = document.querySelector('.canvas-container').offsetWidth
+    gElDownloadCanvas.width = document.querySelector('.canvas-container').offsetWidth
     gElCanvas.height = gElCanvas.width
+    gElDownloadCanvas.height = gElDownloadCanvas.width
 }
 
-function renderMeme() {
+function renderCanvases(){
+    renderMeme()
+    renderMeme(gDownloadCtx, false)
+}
 
+function renderMeme(ctx = gCtx, withSelection = true) {
     const memeImgPath = getMemeImg()
 
     const elImg = new Image()
     elImg.src = memeImgPath
 
     elImg.onload = () => {
-        gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
-        renderTxt()
-        renderSelection(getSelectedLine())
+        ctx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+        renderTxt(ctx)
+        if(withSelection) renderSelection(getSelectedLine())
         // renderTxt({ txt, txtColor, txtAlign, txtSize }, gElCanvas.width / 2, gElCanvas.height / 2)
     }
 }
 
-function renderTxt() {
+function renderTxt(ctx) {
     const meme = getMeme()
     meme.lines.forEach((line, idx) => {
         const { txt, color, align, size, font, outlineColor } = meme.lines[idx]
 
-        gCtx.lineWidth = size * 0.03
-        gCtx.strokeStyle = outlineColor
-        gCtx.fillStyle = color
-        gCtx.font = `${size}px ${font}`
-        gCtx.textAlign = align
-        gCtx.textBaseline = 'top'
+        ctx.lineWidth = size * 0.03
+        ctx.strokeStyle = outlineColor
+        ctx.fillStyle = color
+        ctx.font = `${size}px ${font}`
+        ctx.textAlign = align
+        ctx.textBaseline = 'top'
 
         if (!line.position) {
             switch (idx) {
@@ -74,32 +89,32 @@ function renderTxt() {
             }
         }
 
-        gCtx.fillText(txt, line.position.x, line.position.y)
-        gCtx.strokeText(txt, line.position.x, line.position.y)
+        ctx.fillText(txt, line.position.x, line.position.y)
+        ctx.strokeText(txt, line.position.x, line.position.y)
 
     })
 }
 
 function onChangeTxt(txt) {
     setLineTxt(txt)
-    renderMeme()
+    renderCanvases()
 }
 
 function onSelectColor(color) {
     setColor(color)
-    renderMeme()
+    renderCanvases()
 }
 
 function onChangeFontSize(diff) {
     const line = getSelectedLine()
     setFontSize(diff)
     line.selectionPos = {xStart: 0, yStart: line.position.y, xEnd: gElCanvas.width, yEnd: line.size}
-    renderMeme()
+    renderCanvases()
 }
 
 function onChangeLine() {
     setCurrentLine()
-    renderMeme()
+    renderCanvases()
     setInputValue()
 }
 
@@ -111,34 +126,34 @@ function setInputValue() {
 }
 
 function downloadImage(elLink) {
-    const imgData = gElCanvas.toDataURL('image/png')
+    const imgData = gElDownloadCanvas.toDataURL('image/png')
     elLink.href = imgData
 }
 
 function onSetAlignment(alignment) {
     setLineAlignment(alignment)
-    renderMeme()
+    renderCanvases()
 }
 
 function onSetFont(font) {
     setLineFont(font)
-    renderMeme()
+    renderCanvases()
 }
 
 function onSelectOutlineColor(color) {
     setOutlineColor(color)
-    renderMeme()
+    renderCanvases()
 }
 
 function onDeleteLine() {
     deleteLine()
     setInputValue()
-    renderMeme()
+    renderCanvases()
 }
 
 function onAddLine() {
     addLine()
-    renderMeme()
+    renderCanvases()
 }
 
 function onCanvasClicked(ev) {
@@ -151,7 +166,7 @@ function onCanvasClicked(ev) {
     
     if (line) {
         selectLine(line)
-        renderMeme()
+        renderCanvases()
         setInputValue()
     }
     // console.log(line)

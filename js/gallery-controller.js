@@ -17,7 +17,7 @@ function renderGallery(){
 
 function onImgSelect(id){
     setImg(id)
-    renderMeme()
+    renderCanvases()
     openEditor()
     window.scrollTo(0, 0)
 }
