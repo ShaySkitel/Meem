@@ -22,27 +22,31 @@ let gImgs = [
     { id: 18, url: 'images/18.jpg', keywords: ['funny', 'cat'] }
 ];
 
-let gMeme = {
-    selectedImgId: 1,
-    selectedLineIdx: 0,
-    lines: [
-        {
-            txt: 'Placeholder',
-            size: 30,
-            align: 'center',
-            color: 'white',
-            outlineColor: 'black',
-            font: 'Impact'
-        },
-        {
-            txt: 'Placeholder',
-            size: 30,
-            align: 'center',
-            color: 'white',
-            outlineColor: 'black',
-            font: 'Impact'
-        }
-    ]
+let gMeme
+
+function resetMeme(){
+    gMeme = {
+        selectedImgId: 1,
+        selectedLineIdx: 0,
+        lines: [
+            {
+                txt: 'Placeholder',
+                size: 30,
+                align: 'center',
+                color: 'white',
+                outlineColor: 'black',
+                font: 'Impact'
+            },
+            {
+                txt: 'Placeholder',
+                size: 30,
+                align: 'center',
+                color: 'white',
+                outlineColor: 'black',
+                font: 'Impact'
+            }
+        ]
+    }
 }
 
 function getMeme() {

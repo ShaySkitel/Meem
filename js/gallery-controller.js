@@ -16,6 +16,7 @@ function renderGallery(){
 }
 
 function onImgSelect(id){
+    resetMeme()
     setImg(id)
     renderCanvases()
     openEditor()

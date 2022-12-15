@@ -11,6 +11,7 @@ let gDownloadCtx
 let gDraggingLine
 
 function onEditorInit() {
+    resetMeme()
     gElCanvas = document.querySelector('.canvas-container canvas')
     gCtx = gElCanvas.getContext('2d')
     gElDownloadCanvas = document.querySelector('.downloading-canvas')
