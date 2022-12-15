@@ -15,17 +15,17 @@
 
 @font-face {
     font-family: "Montserrat";
-    src: url("/fonts/montserrat/Montserrat-Regular.ttf");
+    src: url("../fonts/montserrat/Montserrat-Regular.ttf");
 }
 
 @font-face {
     font-family: "Montserrat-thin";
-    src: url("/fonts/montserrat/Montserrat-Thin.ttf");
+    src: url("../fonts/montserrat/Montserrat-Thin.ttf");
 }
 
 @font-face {
     font-family: "fa";
-    src: url("/fonts/font-awesome/fa-regular-400.ttf");
+    src: url("../fonts/font-awesome/fa-regular-400.ttf");
 }
 
 /* basics */
@@ -59,6 +59,9 @@ small {
 
 .main-content {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 /* layouts */
@@ -155,7 +158,6 @@ small {
     left: 0;
     width: 100%;
     min-height: 100%;
-    height: fit-content;
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
     padding: 1.375rem 0;
@@ -401,5 +403,18 @@ body.editor-open .editor-container {
 
     .toolbox-container .option img {
         width: 70%;
+    }
+
+    section.editor-container {
+        height: fit-content;
+    }
+
+    .search-input {
+        text-align: left;
+    }
+
+    body.editor-open .main-footer {
+        position: relative;
+        transform: translateY(40%);
     }
 }

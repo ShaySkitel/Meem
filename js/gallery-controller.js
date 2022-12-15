@@ -33,3 +33,8 @@ function onGallerySelect(elLink){
         elLink.classList.toggle('active')
     }
 }
+
+function onSearch(query){
+    setSearch(query)
+    renderGallery()
+}

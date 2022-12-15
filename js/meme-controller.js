@@ -15,12 +15,28 @@ function onEditorInit() {
         setCanvasSize()
         renderMeme()
     }
+
+    gElCanvas.onmouseup = () => {
+        const selection = window.getSelection();
+        const range = selection.getRangeAt(0);
+    
+        // Calculate the bounding rectangle of the selected text
+        const rect = range.getBoundingClientRect();
+    
+        // Draw a rectangle around the selected text
+        gCtx.strokeStyle = "red";
+        gCtx.strokeRect(rect.left, rect.top, rect.width, rect.height);
+    }
 }
 
 function setCanvasSize(){
     if(window.innerWidth > 518) {
         gElCanvas.width = 500
         gElCanvas.height = 500
+    } 
+     if(window.innerWidth > 1220) {
+        gElCanvas.width = 700
+        gElCanvas.height = 700
     }
     gElCanvas.width = document.querySelector('.canvas-container').offsetWidth
     gElCanvas.height = gElCanvas.width
