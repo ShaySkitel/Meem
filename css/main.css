@@ -230,13 +230,13 @@ body.editor-open .editor-container {
 }
 
 .card img {
-    height: 100%;
-    transition: height 0.15s ease-in-out;
+    opacity: 1;
+    transition: opacity 0.15s ease-in-out;
     object-fit: cover;
 }
 
 .card:hover img {
-    height: 110%;
+    opacity: 0.8;
 }
 
 .downloading-canvas {
