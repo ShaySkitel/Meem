@@ -66,22 +66,26 @@ function onUp() {
 }
 
 function setCanvasSize() {
+    const imgUrl = getMemeImg()
+    const img = new Image()
+    img.src = imgUrl
+    console.log(img.width)
     if (window.innerWidth > 518) {
         gElCanvas.width = 500
-        gElCanvas.height = 500
-        gElDownloadCanvas.height = 500
+        gElCanvas.height = img.height * 500 / img.width
+        gElDownloadCanvas.height = img.height * 500 / img.width
         gElDownloadCanvas.width = 500
     }
     if (window.innerWidth > 1220) {
         gElCanvas.width = 600
-        gElCanvas.height = 600
-        gElDownloadCanvas.height = 600
+        gElCanvas.height = img.height * 600 / img.width
+        gElDownloadCanvas.height = img.height * 600 / img.width
         gElDownloadCanvas.width = 600
     }
     gElCanvas.width = document.querySelector('.canvas-container').offsetWidth
     gElDownloadCanvas.width = document.querySelector('.canvas-container').offsetWidth
-    gElCanvas.height = gElCanvas.width
-    gElDownloadCanvas.height = gElDownloadCanvas.width
+    gElCanvas.height = img.height * gElCanvas.width / img.width
+    gElDownloadCanvas.height = img.height * gElDownloadCanvas.width / img.width
 }
 
 function renderCanvases() {

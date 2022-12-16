@@ -2,6 +2,7 @@
 
 let gSearchQuery = ''
 let gKeywordSearchCountMap = { 'funny': 12, 'puppy': 16, 'baby': 8, 'president': 10}
+let gId = 19
 let gImgs = [
     { id: 1, url: 'images/1.jpg', keywords: ['funny', 'trump', 'man', 'president', 'united states'] },
     { id: 2, url: 'images/2.jpg', keywords: ['cute', 'dog', 'puppy', 'puppies', 'labrador'] },
@@ -25,13 +26,20 @@ let gImgs = [
 
 let gMeme
 
+function addImg(img){
+    gImgs.push({
+        id: gId++, url: img.src, keywords: ['']
+    })
+    return gImgs[gImgs.length - 1]
+}
+
 function getKeywordsMap(){
     return gKeywordSearchCountMap
 }
 
-function resetMeme(){
+function resetMeme(id = 1){
     gMeme = {
-        selectedImgId: 1,
+        selectedImgId: id,
         selectedLineIdx: 0,
         lines: [
             {
