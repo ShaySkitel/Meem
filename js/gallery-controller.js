@@ -41,6 +41,7 @@ function onKeywordFilter(keyword) {
 function onImgSelect(id) {
     resetMeme()
     setImg(id)
+    setCanvasSize()
     renderCanvases()
     openEditor()
     window.scrollTo(0, 0)
