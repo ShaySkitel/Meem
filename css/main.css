@@ -226,6 +226,17 @@ body.editor-open .editor-container {
 
 .card {
     max-width: fit-content;
+    overflow: hidden;
+}
+
+.card img {
+    height: 100%;
+    transition: height 0.15s ease-in-out;
+    object-fit: cover;
+}
+
+.card:hover img {
+    height: 110%;
 }
 
 .downloading-canvas {

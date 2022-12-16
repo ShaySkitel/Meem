@@ -81,6 +81,7 @@ function loadImageFromInput(ev) {
             resetMeme(imgObj.id)
             renderCanvases()
             openEditor()
+            renderGallery()
         }
     }
 
