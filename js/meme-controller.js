@@ -259,3 +259,16 @@ function onAddSticker(sticker){
     addLine(sticker, 80)
     renderCanvases()
 }
+
+function onShare(){
+    const imgDataUrl = gElDownloadCanvas.toDataURL('image/jpeg') // Gets the canvas content as an image format
+
+    // A function to be called if request succeeds
+    function onSuccess(uploadedImgUrl) {
+        // Encode the instance of certain characters in the url
+        const encodedUploadedImgUrl = encodeURIComponent(uploadedImgUrl)
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}`)
+    }
+    // Send the image to the server
+    shareImg(imgDataUrl, onSuccess)
+}

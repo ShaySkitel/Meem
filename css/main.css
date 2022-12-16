@@ -278,18 +278,26 @@ body.editor-open .editor-container {
     grid-column: 2;
 }
 
-.toolbox-container .download-img {
+.btn {
     background-color: var(--primary-bgc);
     color: var(--primary-color);
-    grid-row: 6;
-    grid-column: 4 / span 2;
+    transition: background-color 0.15s ease-in-out;
     border-radius: 1em;
     text-decoration: none;
-    transition: background-color 0.15s ease-in-out;
 }
 
-.toolbox-container .download-img:hover {
+.btn:hover {
     background-color: var(--selection-color);
+}
+
+.toolbox-container .download-img {
+    grid-row: 6;
+    grid-column: 4 / span 2;
+}
+
+.toolbox-container .share-facebook {
+    grid-row: 6;
+    grid-column: 1 / span 2;
 }
 
 .toolbox-container .add-line {

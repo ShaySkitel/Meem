@@ -40,11 +40,6 @@
                         <option value="dog"></option>
                     </datalist>
                     <ul class="clean-list flex keywords-filter">
-                        <!-- <li><a href="#">test</a></li>
-                        <li><a href="#">test</a></li>
-                        <li><a href="#">test</a></li>
-                        <li><a href="#">test</a></li>
-                        <li><a href="#">test</a></li> -->
                     </ul>
                 </div>
             </section>
@@ -122,7 +117,8 @@
                         <div onclick="onAddSticker(this.innerText)" class="sticker">❤️</div>
                     </div>
                     
-                    <a title="Download meme" class="download-img flex align-center justify-center" href="#" onclick="downloadImage(this)" download="meme.png">Download</a>
+                    <a title="Download meme" class="download-img flex align-center justify-center btn" href="#" onclick="downloadImage(this)" download="meme.png">Download</a>
+                    <a title="Share on facebook" class="share-facebook flex align-center justify-center btn" href="#" onclick="onShare()">Share</a>
 
                 </section>
             </section>
@@ -136,6 +132,7 @@
 
         <canvas width="500" height="500" class="downloading-canvas"></canvas>
     </div>
+    <script src="./js/services/upload-service.js"></script>
     <script src="./js/services/meme-service.js"></script>
     <script src="./js/meme-controller.js"></script>
     <script src="./js/gallery-controller.js"></script>
