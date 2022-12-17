@@ -1,0 +1,169 @@
+.editor-container {
+    background-color: var(--body-bgc);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    padding: 1.375rem 0;
+    transform: translateX(100%);
+    transition: transform 0.2s ease-in-out;
+    pointer-events: none;
+}
+
+body.editor-open .gallery-container {
+    display: none;
+}
+
+body.editor-open .editor-container {
+    transform: translateX(0);
+    pointer-events: all;
+}
+
+.canvas-container {
+    width: 300px;
+    height: fit-content;
+}
+
+.add-sticker {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.add-sticker .sticker {
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.downloading-canvas {
+    display: none;
+}
+
+.toolbox-container {
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr 1fr 1fr 1fr 2fr 1fr;
+    gap: 1rem;
+}
+
+.toolbox-container input,
+.toolbox-container select {
+    border-radius: 1em;
+    border: none;
+}
+
+.toolbox-container .meme-text {
+    grid-row: 1;
+    grid-column: 1 / -1;
+}
+
+.toolbox-container .change-line {
+    grid-row: 2;
+    grid-column: 2;
+}
+
+.toolbox-container .select-color {
+    grid-row: 4;
+    grid-column: 5;
+}
+
+.toolbox-container .increase-font {
+    grid-row: 3;
+    grid-column: 1;
+}
+
+.toolbox-container .decrease-font {
+    grid-row: 3;
+    grid-column: 2;
+}
+
+.toolbox-container .download-img {
+    grid-row: 6;
+    grid-column: 4 / span 2;
+}
+
+.toolbox-container .share-facebook {
+    grid-row: 6;
+    grid-column: 1 / span 2;
+}
+
+.toolbox-container .add-line {
+    grid-row: 2;
+    grid-column: 3;
+}
+
+.toolbox-container .delete-line {
+    grid-row: 2;
+    grid-column: 4;
+}
+
+.toolbox-container .font-left {
+    grid-row: 3;
+    grid-column: 3;
+}
+
+.toolbox-container .font-center {
+    grid-row: 3;
+    grid-column: 4;
+}
+
+.toolbox-container .font-right {
+    grid-row: 3;
+    grid-column: 5;
+}
+
+.toolbox-container .font-style {
+    grid-row: 4;
+    grid-column: 1 / span 3;
+}
+
+.toolbox-container .outline-color {
+    grid-row: 4;
+    grid-column: 4;
+}
+
+.toolbox-container .add-sticker {
+    grid-row: 5;
+    grid-column: 1 / -1;
+    background-color: var(--primary-color);
+    border-radius: 1em;
+}
+
+.toolbox-container .option {
+    max-width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1em;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.toolbox-container .option:not(.disabled):hover {
+    background-color: var(--primary-bgc);
+}
+
+.option.disabled {
+    background-color: gray;
+}
+
+.toolbox-container .option img {
+    width: 50%;
+}
+
+.toolbox-container .select-color input, .toolbox-container .outline-color input{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}

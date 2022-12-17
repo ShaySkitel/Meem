@@ -1,0 +1,11 @@
+.btn {
+    background-color: var(--primary-bgc);
+    color: var(--primary-color);
+    transition: background-color 0.15s ease-in-out;
+    border-radius: 1em;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: var(--selection-color);
+}

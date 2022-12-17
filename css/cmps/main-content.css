@@ -1,0 +1,71 @@
+.gallery-container {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1em;
+    justify-content: center;
+    align-content: center;
+    padding: 1em 0;
+}
+
+.card {
+    cursor: pointer;
+    max-width: fit-content;
+    overflow: hidden;
+}
+
+.card img {
+    opacity: 1;
+    transition: opacity 0.15s ease-in-out;
+    object-fit: cover;
+}
+
+.card:hover img {
+    opacity: 0.8;
+}
+
+.import-file {
+    position: relative;
+    max-width: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.15s ease-in-out;
+    font-weight: bold;
+    border: 2px solid var(--selection-color);
+    min-height: 200px;
+}
+
+.import-file:hover {
+    background-color: var(--primary-bgc);
+}
+
+.file-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.about-container {
+    background-color: var(--primary-color);
+    padding: 4em;
+}
+
+.about-container div {
+    flex-direction: column;
+    align-items: center;
+}
+
+.about-container .about-text {
+    padding: 2em 0;
+}
+
+.about-container .profile-img {
+    max-width: 400px;
+}
+
+.about-container .profile-img img {
+    border-radius: 50%;
+}

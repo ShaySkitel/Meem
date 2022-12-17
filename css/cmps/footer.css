@@ -1,0 +1,12 @@
+.main-footer {
+    padding: 3.89473em 0;
+}
+
+.main-footer .brand {
+    margin-block-end: 0.8421em;
+    font-weight: bold;
+}
+
+.main-footer small {
+    font-family: Montserrat-thin;
+}

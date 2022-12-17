@@ -1,0 +1,33 @@
+html {
+    font-size: 19px;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--body-bgc);
+    font-family: Montserrat, sans-serif;
+}
+
+.container {
+    overflow-x: hidden;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+small {
+    display: block;
+}
+
+.main-header,
+.main-footer {
+    background-color: var(--primary-bgc);
+    color: var(--primary-color);
+}
+
+.main-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

@@ -1,0 +1,60 @@
+.main-nav a {
+    display: block;
+    padding: 1.25em 1em;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.main-nav a.active {
+    box-shadow: inset 0px -6px 0px 0px var(--selection-color);
+    color: var(--selection-color);
+}
+
+.filter-container {
+    background-color: var(--primary-color);
+    color: var(--selection-color);
+    padding: 1em 0;
+    font-size: 1.2rem;
+}
+
+.search-input {
+    border-radius: 1em;
+    padding-inline-start: 0.5em;
+}
+
+.keywords-filter {
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.keywords-filter a {
+    text-decoration: none;
+    margin-inline-end: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.keywords-filter li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.keywords-filter li:last-of-type a {
+    margin-inline-end: 0;
+}
+
+.filter-container * {
+    color: inherit;
+    text-align: center;
+}
+
+.filter-container div {
+    flex-direction: column;
+    align-items: center;
+}

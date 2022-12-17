@@ -69,7 +69,7 @@ function setCanvasSize() {
     const imgUrl = getMemeImg()
     const img = new Image()
     img.src = imgUrl
-    console.log(img.width)
+
     if (window.innerWidth > 518) {
         gElCanvas.width = 500
         gElCanvas.height = img.height * 500 / img.width
@@ -82,6 +82,7 @@ function setCanvasSize() {
         gElDownloadCanvas.height = img.height * 600 / img.width
         gElDownloadCanvas.width = 600
     }
+    
     gElCanvas.width = document.querySelector('.canvas-container').offsetWidth
     gElDownloadCanvas.width = document.querySelector('.canvas-container').offsetWidth
     gElCanvas.height = img.height * gElCanvas.width / img.width
