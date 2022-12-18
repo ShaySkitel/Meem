@@ -15,7 +15,7 @@ function onEditorInit() {
     gCtx = gElCanvas.getContext('2d')
     gElDownloadCanvas = document.querySelector('.downloading-canvas')
     gDownloadCtx = gElDownloadCanvas.getContext('2d')
-    setInputValue()
+    // setInputValue()
     setCanvasSize()
     renderCanvases()
     addEventListeners()
@@ -163,14 +163,26 @@ function onChangeFontSize(diff) {
 function onChangeLine() {
     setCurrentLine()
     renderCanvases()
+    
     setInputValue()
 }
 
 function setInputValue() {
     if (!gMeme.lines || !gMeme.lines.length) return
+    const line = getSelectedLine()
     const elInput = document.querySelector('.meme-text')
+    if(line.txt === 'Placeholder') {
+        elInput.value = ''
+        focusTxtInput()
+        return
+    }
     const meme = getMeme()
     elInput.value = meme.lines[meme.selectedLineIdx].txt
+    focusTxtInput()
+}
+
+function focusTxtInput(){
+    document.querySelector('.meme-text').focus()
 }
 
 function downloadImage(elLink) {

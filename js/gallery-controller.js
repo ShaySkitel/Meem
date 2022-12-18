@@ -24,7 +24,10 @@ function renderGallery() {
                     <img src="${image.url}">
                 </article>`
     })
-    strHTMLs.unshift(`<article class="card import-file">Import Image<input type="file" class="file-input" name="image" onchange="onImgInput(event)"></article>`)
+    
+    if(!isSearching()) {
+        strHTMLs.unshift(`<article class="card import-file">Import Image<input type="file" class="file-input" name="image" onchange="onImgInput(event)"></article>`)
+    }
     const elContainer = document.querySelector('.gallery-container')
     elContainer.innerHTML = strHTMLs.join('')
 }
@@ -50,6 +53,9 @@ function onImgSelect(id) {
 function openEditor() {
     document.body.classList.toggle('editor-open')
     document.querySelector('.main-nav .gallery-btn').classList.toggle('active')
+    setTimeout(() => {
+        focusTxtInput()
+    }, 200);
 }
 
 function onGallerySelect(elLink) {

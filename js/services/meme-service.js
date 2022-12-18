@@ -37,6 +37,10 @@ function getKeywordsMap(){
     return gKeywordSearchCountMap
 }
 
+function isSearching(){
+    return gSearchQuery.length > 0
+}
+
 function resetMeme(id = 1){
     gMeme = {
         selectedImgId: id,
@@ -77,11 +81,9 @@ function setLineTxt(txt) {
 function getImgs() {
     if (!gSearchQuery) return gImgs
     return gImgs.filter(img => {
-        // return img.keywords.includes(gSearchQuery)
         return img.keywords.some(keyword => keyword.includes(gSearchQuery))
     })
 }
-
 
 function setImg(id) {
     gMeme.selectedImgId = id
